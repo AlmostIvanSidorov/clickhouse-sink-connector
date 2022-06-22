@@ -15,9 +15,11 @@ CLICKHOUSE_DATABASE="test"
 
 BUFFER_COUNT=10000
 
-TOPICS="SERVER5432.test.employees_predated, SERVER5432.test.products, SERVER5432.transaction, SERVER5432.test.t1"
-TOPICS_TABLE_MAP="SERVER5432.test.employees_predated:employees, SERVER5432.test.products:products"
+TOPICS="SERVER5432.test.employees_predated, SERVER5432.test.products, SERVER5432.transaction, SERVER5432.test.t1, SERVER5432.test.users,
+SERVER5432.test.clickhouse_users"
+TOPICS_TABLE_MAP="SERVER5432.test.employees_predated:employees, SERVER5432.test.products:products, SERVER5432.test.clickhouse_users:clickhouse_users"
 #TOPICS="SERVER5432"
+#SERVER5432.test.users_1:users_1
 
 cat <<EOF | curl --request POST --url "${CONNECTORS_MANAGEMENT_URL}" --header 'Content-Type: application/json' --data @-
 {

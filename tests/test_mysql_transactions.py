@@ -2,8 +2,8 @@ import time
 import unittest
 from datetime import date
 
-from tests.clickhouse_connection import ClickHouseConnection
-from tests.mysql_connection import MySqlConnection
+from clickhouse_connection import ClickHouseConnection
+from mysql_connection import MySqlConnection
 from fake_data import FakeData
 
 class MyTestCase(unittest.TestCase):
@@ -42,7 +42,10 @@ class MyTestCase(unittest.TestCase):
         conn.execute_sql(sql_query, fake_row_1)
         conn.execute_sql(sql_query, fake_row_2)
 
+        print(conn.execute_sql(f'select count(productCode) from {table_name}'))
         conn.get_connection().close()
+        print(conn.execute_sql(f'select count(productCode) from {table_name}'))
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -2,8 +2,8 @@ import time
 import unittest
 from datetime import date
 
-from tests.clickhouse_connection import ClickHouseConnection
-from tests.mysql_connection import MySqlConnection
+from clickhouse_connection import ClickHouseConnection
+from mysql_connection import MySqlConnection
 from fake_data import FakeData
 
 class MyTestCase(unittest.TestCase):
@@ -124,7 +124,7 @@ class MyTestCase(unittest.TestCase):
         col_names = conn.get_column_names(f'select * from {table_name} limit 1')
         sql_query = conn.get_insert_sql_query(table_name,','.join(col_names), len(col_names))
 
-        x = range(1, 1000000)
+        x = range(1, 10)
         for n in x:
             fake_row = FakeData.get_fake_products_row()
             print(fake_row)
